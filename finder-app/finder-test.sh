@@ -7,7 +7,7 @@ set -u
 
 NUMFILES=10
 WRITESTR=AELD_IS_FUN
-WRITEDIR=/finder-app
+WRITEDIR=/
 username=$(cat ../conf/username.txt)
 
 if [ $# -lt 3 ]
@@ -22,7 +22,7 @@ then
 else
 	NUMFILES=$1
 	WRITESTR=$2
-	WRITEDIR=/finder-app
+	WRITEDIR=/
 fi
 
 MATCHSTR="The number of files are ${NUMFILES} and the number of matching lines are ${NUMFILES}"
