@@ -26,7 +26,12 @@ jobs:
         working-directory: ./finder-app
         run: make all
 
-      # Step 4: Run full-test.sh
+      # Step 4: Make full-test.sh executable
+      - name: Grant execute permissions to full-test.sh
+        working-directory: ./assignment-autotest
+        run: chmod +x full-test.sh
+
+      # Step 5: Run full-test.sh
       - name: Run full-test.sh
         working-directory: ./assignment-autotest
         run: ./full-test.sh
