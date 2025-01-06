@@ -13,29 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # Step 2: List all files for debugging
-      - name: List all files
-        run: ls -R
-
-      # Step 3: Build the writer application
-      - name: Build the writer application
-        working-directory: ./finder-app
-        run: make all
-
-      # Step 5: checkout submodule 
-      - uses: actions/checkout@v2
-      - name: Checkout submodules
-        run : git submodule update --init --recursive
-        
-      # Step 4: Make full-test.sh executable
-      - name: Grant execute permissions to full-test.sh
-        working-directory: assignment-autotest
-        run: chmod +x ./full-test.sh
-      
-      # Step 6: Run full test
-      - name: Run unit test
-        run: ./full-test.sh
+          - uses: actions/checkout@v2
+          - name: Checkout submodules
+            run : git submodule update --init --recursive
+          - name: Run unit test
+            run: ./full-test.sh
