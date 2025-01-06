@@ -1,3 +1,4 @@
+assignment 2
 add the env variable to cygwin temporarily
 export PATH=$PATH:/cygdrive/c/Program\ Files\ \(x86\)/Arm\ GNU\ Toolchain\ aarch64-none-linux-gnu/14.2\ rel1/bin
 
