@@ -32,7 +32,7 @@ jobs:
       - name: Checkout submodules
         run : git submodule update --init --recursive
       
-        # Step 5: Grant execute permissions to full-test.sh
+      # Step 5: Grant execute permissions to full-test.sh
       - name: Grant execute permissions to full-test.sh
         working-directory: assignment-autotest
         run: chmod +x full-test.sh
@@ -45,6 +45,18 @@ jobs:
           cmake ..
           make
           
-      # Step 6: Run full test
+      # Step 6: Create necessary directories
+      - name: Create /tmp/aeld-data directory
+        run: mkdir -p /tmp/aeld-data
+        
+      # Step: Set permissions
+      - name: Set permissions on /tmp/aeld-data
+        run: chmod -R 777 /tmp/aeld-data
+
+      # Step: Debug directory permissions
+      - name: Check permissions
+        run: ls -ld /tmp/aeld-data
+        
+      # Step 7: Run full test
       - name: Run unit test
         run: ./full-test.sh
