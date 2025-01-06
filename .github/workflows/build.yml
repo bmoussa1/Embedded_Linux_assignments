@@ -34,4 +34,4 @@ jobs:
       # Step 5: Run full-test.sh
       - name: Run full-test.sh
         working-directory: assignment-autotest
-        run: full-test.sh
+        run: ./full-test.sh
