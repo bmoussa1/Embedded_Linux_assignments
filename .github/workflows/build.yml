@@ -17,16 +17,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: List files for debugging
-      - name: List files for debugging
+      # Step 2: List all files for debugging
+      - name: List all files
         run: ls -R
 
-      # Step 3: Build the application
+      # Step 3: Build the writer application
       - name: Build the writer application
-        working-directory: ./Embedded_Linux_assignments-main/finder-app
+        working-directory: ./finder-app
         run: make all
 
-      # Step 4: Run full tests
+      # Step 4: Run full-test.sh
       - name: Run full-test.sh
-        working-directory: ./Embedded_Linux_assignments-main/assignment-autotest
+        working-directory: ./assignment-autotest
         run: ./full-test.sh
