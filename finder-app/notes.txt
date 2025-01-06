@@ -5,3 +5,7 @@ export PATH=$PATH:/cygdrive/c/Program\ Files\ \(x86\)/Arm\ GNU\ Toolchain\ aarch
 cross compile
 make clean
 make CROSS_COMPILE=aarch64-none-linux-gnu-
+
+permissions for worflow actions
+chmod +x unit-test.sh
+git add --chmod=+x unit-test.sh
