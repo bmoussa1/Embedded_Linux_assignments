@@ -45,10 +45,6 @@ jobs:
           cmake ..
           make
           
-      - name: Source shared helpers
-        run: |
-          source assignment-autotest/shared/script-helpers
-          
       # Step 6: Run full test
       - name: Run unit test
         run: ./full-test.sh
