@@ -30,16 +30,16 @@ else
 fi
 
 # Check if the file exists
-if [ ! -f "$1" ]; then
-    echo "The file '$1' does not exist. Creating the file."
-    # Create the file
-    touch "$1"
-    # Check if file creation was successful
-    if [ $? -ne 0 ]; then
-        echo "Error: Failed to create the file '$1'."
-        exit 1
-    fi
-fi
+# if [ ! -f "$1" ]; then
+    # echo "The file '$1' does not exist. Creating the file."
+    # # Create the file
+    # touch "$1"
+    # # Check if file creation was successful
+    # if [ $? -ne 0 ]; then
+        # echo "Error: Failed to create the file '$1'."
+        # exit 1
+    # fi
+# fi
 
 # The first argument is the path to the file
 echo "$WRITESTR" >> "$WRITEDIR"
