@@ -13,8 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-          - uses: actions/checkout@v2
-          - name: Checkout submodules
-            run : git submodule update --init --recursive
-          - name: Run unit test
-            run: ./full-test.sh
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: List all files for debugging
+      - name: List all files
+        run: ls -R
+
+      # Step 3: Build the writer application
+      - name: Build the writer application
+        working-directory: ./finder-app
+        run: make all
+
+      # Step 5: checkout submodule 
+      - uses: actions/checkout@v2
+      - name: Checkout submodules
+        run : git submodule update --init --recursive
+      
+      # Step 6: Run full test
+      - name: Run unit test
+        run: ./full-test.sh
