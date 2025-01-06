@@ -1,4 +1,9 @@
-name: CI Workflow
+
+Create or update your .github/workflows/build.yml file to include the following steps:
+
+yaml
+Copy code
+name: Build and Test
 
 on:
   push:
@@ -9,20 +14,24 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Step 1: Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up C Compiler
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      # Step 2: List files for debugging
+      - name: List files for debugging
+        run: ls -R
 
-      - name: Build the application
-        run: |
-          make
+      # Step 3: Build the application
+      - name: Build the writer application
+        working-directory: ./Embedded_Linux_assignments-main/finder-app
+        run: make all
 
-      - name: Test the application
-        run: |
-          make test
+      # Step 4: Run full tests
+      - name: Run full-test.sh
+        working-directory: ./Embedded_Linux_assignments-main/assignment-autotest
+        run: ./full-test.sh
