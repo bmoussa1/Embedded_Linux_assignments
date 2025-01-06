@@ -26,15 +26,15 @@ jobs:
         working-directory: ./finder-app
         run: make all
 
-      # Step 4: Make full-test.sh executable
-      - name: Grant execute permissions to full-test.sh
-        working-directory: assignment-autotest
-        run: chmod +x full-test.sh
-
       # Step 5: checkout submodule 
       - uses: actions/checkout@v2
       - name: Checkout submodules
         run : git submodule update --init --recursive
+        
+      # Step 4: Make full-test.sh executable
+      - name: Grant execute permissions to full-test.sh
+        working-directory: assignment-autotest
+        run: chmod +x full-test.sh
       
       # Step 6: Run full test
       - name: Run unit test
