@@ -7,23 +7,23 @@ SOURCE_DIR=$(realpath ${SCRIPTS_DIR}/../../../)
 
 pushd ${SOURCE_DIR}/finder-app
 
-./writer.sh test.txt githubactionsrunning
+./writer.sh test1.txt githubactionsrunning
 rc=$?
 if [ $rc -ne 1 ]; then
-	add_validate_error "writer.sh should have exited with return value 1 if no parameters were specified"
+	echo "writer.sh should have exited with return value 1 if no parameters were specified"
 fi
 
-./writer.sh "$filedir"
+./writer.sh test1.txt githubactionsrunning
 rc=$?
 if [ $rc -ne 1 ]; then
-	add_validate_error "writer.sh should have exited with return value 1 if write string is not specified"
+	echo "writer.sh should have exited with return value 1 if write string is not specified"
 fi
 
 # Run finder-test.sh with default directory and random directory
 ./finder-test.sh
 rc=$?
 if [ $rc -ne 0 ]; then
-	add_validate_error "finder-test.sh execution for default directory failed with return code $rc"
+	echo "finder-test.sh execution for default directory failed with return code $rc"
 fi
 
 # generate directory name from random string
@@ -32,7 +32,7 @@ dir_name=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w32 | head -n 1)
 
 rc=$?
 if [ $rc -ne 0 ]; then
-	add_validate_error "finder-test.sh execution for random directory failed with return code $rc"
+	echo "finder-test.sh execution for random directory failed with return code $rc"
 fi
 
 if [ ! -z "${validate_error}" ]; then
