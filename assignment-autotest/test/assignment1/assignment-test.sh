@@ -7,7 +7,7 @@ SOURCE_DIR=$(realpath ${SCRIPTS_DIR}/../../../)
 
 pushd ${SOURCE_DIR}/finder-app
 
-./writer.sh
+./writer.sh test.txt githubactionsrunning
 rc=$?
 if [ $rc -ne 1 ]; then
 	add_validate_error "writer.sh should have exited with return value 1 if no parameters were specified"
