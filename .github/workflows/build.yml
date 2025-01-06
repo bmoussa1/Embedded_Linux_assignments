@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
       # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -36,6 +37,18 @@ jobs:
         working-directory: assignment-autotest
         run: chmod +x full-test.sh
         
+      - name: Clean and recreate build directory
+        run: |
+          rm -rf build
+          mkdir build
+          cd build
+          cmake ..
+          make
+          
+      - name: Source shared helpers
+        run: |
+          source assignment-autotest/shared/script-helpers
+          
       # Step 6: Run full test
       - name: Run unit test
         run: ./full-test.sh
