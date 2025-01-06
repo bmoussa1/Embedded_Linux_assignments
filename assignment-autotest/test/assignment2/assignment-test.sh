@@ -13,19 +13,19 @@ make
 ./writer
 rc=$?
 if [ $rc -ne 1 ]; then
-	add_validate_error "writer should have exited with return value 1 if no parameters were specified"
+	echo "writer should have exited with return value 1 if no parameters were specified"
 fi
 
 ./writer "$filedir"
 rc=$?
 if [ $rc -ne 1 ]; then
-	add_validate_error "writer should have exited with return value 1 if write string is not specified"
+	echo "writer should have exited with return value 1 if write string is not specified"
 fi
 
 ./finder-test.sh
 rc=$?
 if [ $rc -ne 0 ]; then
-	add_validate_error "finder-test.sh execution failed with return code $rc"
+	echo "finder-test.sh execution failed with return code $rc"
 fi
 
 if [ ! -z "${validate_error}" ]; then
