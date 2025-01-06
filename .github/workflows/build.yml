@@ -31,7 +31,11 @@ jobs:
         working-directory: assignment-autotest
         run: chmod +x full-test.sh
 
-      # Step 5: Run full-test.sh
-      - name: Run full-test.sh
-        working-directory: assignment-autotest
+      # Step 5: checkout submodule 
+      - uses: actions/checkout@v2
+      - name: Checkout submodules
+        run : git submodule update --init --recursive
+      
+      # Step 6: Run full test
+      - name: Run unit test
         run: ./full-test.sh
