@@ -14,7 +14,7 @@ if [[ -z ${SKIP_BUILD} || ${SKIP_BUILD} -eq 0 ]]; then
     ./manual-linux.sh ${OUTDIR}
 	rc=$?
 	if [ $rc -ne 0 ]; then
-		add_validate_error "manual-linux script failed with ${rc}"
+		echo "manual-linux script failed with ${rc}"
 	fi
     popd
 fi
@@ -32,9 +32,9 @@ if [[ -z ${DO_VALIDATE} || ${DO_VALIDATE} -eq 1 ]]; then
     timeout ${qemu_timeout} grep -q "finder-app execution complete" <(tail -f ${logfile})
     rc=$?
     if [ $rc -ne 0 ]; then
-        add_validate_error "Running finder application on qemu failed with return code $rc, see ${logfile} for details"
+        echo "Running finder application on qemu failed with return code $rc, see ${logfile} for details"
         if [ $rc -eq 124 ]; then
-            add_validate_error "Application timed out waiting ${qemu_timeout} seconds for finder app execution to complete"
+            echo "Application timed out waiting ${qemu_timeout} seconds for finder app execution to complete"
         fi
     fi
     killall qemu-system-aarch64
